@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/bottom_nav_colors.xml" value="0.34629629629629627" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/brands_button_bg.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/hhh.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/ic_back.xml" value="0.3425925925925926" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/ic_favorite.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/ic_favorite_red.xml" value="0.3675925925925926" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/drawable/ic_products.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/activity_main.xml" value="0.3037037037037037" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/fragment_detail.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/fragment_favorite.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/fragment_first.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/fragment_product.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/fragment_search.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/item_product_list_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/item_produt_type_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/product_brands_item_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/product_colors_item_layout.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/layout/product_colors_lay.xml" value="0.3625" />
+        <entry key="..\:/Users/Firat/AndroidProjeler/MakeupProductsApp/app/src/main/res/menu/bottom_nav.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
