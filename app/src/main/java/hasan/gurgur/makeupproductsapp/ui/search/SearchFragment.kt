@@ -15,6 +15,7 @@ import hasan.gurgur.makeupproductsapp.R
 import hasan.gurgur.makeupproductsapp.databinding.FragmentProductBinding
 import hasan.gurgur.makeupproductsapp.databinding.FragmentSearchBinding
 import hasan.gurgur.makeupproductsapp.model.CircleModel
+import hasan.gurgur.makeupproductsapp.model.ProductModel
 import hasan.gurgur.makeupproductsapp.ui.product.ProductListAdapter
 import hasan.gurgur.makeupproductsapp.viewmodel.ProductViewModel
 
@@ -24,8 +25,11 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProductViewModel by viewModels()
-    lateinit var productTypeAdapter : ProductTypeListAdapter
+    lateinit var productTypeAdapter: ProductTypeListAdapter
+    lateinit var searchCircleListAdapter: ProductListAdapter
     val listProductType: ArrayList<CircleModel> = arrayListOf()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,9 +41,9 @@ class SearchFragment : Fragment() {
     ): View? {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         initAdapter()
-
-       viewModel.productModel.observe(requireActivity()) {
-
+        initSearchCircleAdapter()
+        viewModel.productTypeModel.observe(requireActivity()) {
+            searchCircleListAdapter.submitList(it)
         }
         return binding.root
     }
@@ -50,25 +54,89 @@ class SearchFragment : Fragment() {
     }
 
     private fun initAdapter() {
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/915/original/open-uri20171224-4-uv4oww?1514082622", "Blush"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/926/original/open-uri20171224-4-6mx0la?1514082656", "Bronzer"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/985/original/data?1514082775", "Eyebrow"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/196/original/open-uri20171223-4-p5h931?1514062283", "Eyeliner"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/804/original/open-uri20171223-4-1ljakeo?1514072320", "Eyeshadow"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/903/original/open-uri20171224-4-1rbb28u?1514082678", "Foundation"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/409/original/data?1514063319", "Lip liner"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/023/original/open-uri20180630-4-149dwc3?1530390375", "Lipstick"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/997/original/data?1514082787", "Mascara"))
-     listProductType.add(CircleModel("http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/142/original/data?1514062268", "Nail polish"))
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/915/original/open-uri20171224-4-uv4oww?1514082622",
+                "Blush"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/926/original/open-uri20171224-4-6mx0la?1514082656",
+                "Bronzer"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/985/original/data?1514082775",
+                "Eyebrow"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/196/original/open-uri20171223-4-p5h931?1514062283",
+                "Eyeliner"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/804/original/open-uri20171223-4-1ljakeo?1514072320",
+                "Eyeshadow"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/903/original/open-uri20171224-4-1rbb28u?1514082678",
+                "Foundation"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/409/original/data?1514063319",
+                "Lip liner"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/023/original/open-uri20180630-4-149dwc3?1530390375",
+                "Lipstick"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/997/original/data?1514082787",
+                "Mascara"
+            )
+        )
+        listProductType.add(
+            CircleModel(
+                "http://s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/142/original/data?1514062268",
+                "Nail polish"
+            )
+        )
 
         productTypeAdapter = ProductTypeListAdapter {
             viewModel.fetchProductTypeDataFromRemoteApi(it?.name.toString())
-            Toast.makeText(requireContext(), it?.name, Toast.LENGTH_SHORT).show()
         }
         binding.productTypeRec.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.productTypeRec.adapter = productTypeAdapter
         productTypeAdapter.submitList(listProductType)
     }
+
+    private fun initSearchCircleAdapter() {
+        searchCircleListAdapter = ProductListAdapter(characterClickCallback = {
+            Toast.makeText(requireContext(), it?.name, Toast.LENGTH_SHORT).show()
+        }, favClick = {
+            it?.clickedFavItem = !it?.clickedFavItem!!
+            searchCircleListAdapter.notifyDataSetChanged()
+        })
+        binding.productTypeFilterListRec.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.productTypeFilterListRec.adapter = searchCircleListAdapter
+
+
+    }
+
 
 }

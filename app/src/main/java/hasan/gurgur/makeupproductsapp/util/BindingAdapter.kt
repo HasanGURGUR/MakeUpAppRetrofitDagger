@@ -13,7 +13,6 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("loadImage")
     fun loadImageFromUrl(imageview: ImageView, url: String?) {
-
         if (url == null) {
             Glide.with(imageview.context).load(R.drawable.placeholder_makeup).into(imageview)
         } else {

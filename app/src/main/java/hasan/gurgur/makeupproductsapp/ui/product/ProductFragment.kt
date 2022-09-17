@@ -41,7 +41,7 @@ class ProductFragment : Fragment() {
         _binding = FragmentProductBinding.inflate(inflater, container, false)
 
         initAdapter()
-        viewModel.fetchDataFromRemoteApi("almay")
+
 
         viewModel.productModel.observe(requireActivity()) {
 

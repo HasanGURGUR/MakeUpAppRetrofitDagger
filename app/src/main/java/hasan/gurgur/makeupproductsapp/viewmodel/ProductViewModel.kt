@@ -18,7 +18,7 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
 
 
     val productModel = MutableLiveData<ProductModel>()
-    val productTypeModel = MutableLiveData<ProductModelItem>()
+    val productTypeModel = MutableLiveData<List<ProductModelItem>>()
     private val disposable: CompositeDisposable = CompositeDisposable()
 
 
@@ -49,8 +49,8 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
             repository.getProductType(productType)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<ProductModelItem>() {
-                    override fun onSuccess(response: ProductModelItem) {
+                .subscribeWith(object : DisposableSingleObserver<List<ProductModelItem>>() {
+                    override fun onSuccess(response: List<ProductModelItem>) {
                         productTypeModel.value = response
                     }
 

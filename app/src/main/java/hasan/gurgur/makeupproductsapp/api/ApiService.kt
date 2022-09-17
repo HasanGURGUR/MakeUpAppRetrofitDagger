@@ -12,5 +12,5 @@ interface ApiService {
     fun getProducts(@Query("brand") brand : String) : Single<ProductModel>
 
     @GET("products.json")
-    fun getProductType(@Query("productType") productType : String) : Single<ProductModelItem>
+    fun getProductType(@Query("product_type") productType : String) : Single<List<ProductModelItem>>
 }

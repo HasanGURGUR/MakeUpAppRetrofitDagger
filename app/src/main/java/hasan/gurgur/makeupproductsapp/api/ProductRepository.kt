@@ -12,7 +12,7 @@ class ProductRepository @Inject constructor(val apiService: ApiService) {
         return apiService.getProducts(brand)
     }
 
-    fun getProductType(productType : String) : Single<ProductModelItem> {
+    fun getProductType(productType : String) : Single<List<ProductModelItem>> {
         return apiService.getProductType(productType)
     }
 }
